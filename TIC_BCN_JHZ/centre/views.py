@@ -7,11 +7,9 @@ def index(request):
     return HttpResponse(template.render())
 
 def student(request):
-    from django.shortcuts import render
-
-def students(request):
     students = [
         {
+            'id': '1',
             'nom': 'Jun',
             'cognom1': 'Zhu',
             'cognom2': 'Zhang',
@@ -20,6 +18,7 @@ def students(request):
             'moduls_matriculats': ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6' , 'Mòdul 5']
         },
         {
+            'id': '2',
             'nom': 'Joel',
             'cognom1': 'Ghanem',
             'cognom2': 'Gomez',
@@ -28,6 +27,7 @@ def students(request):
             'moduls_matriculats':  ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6']
         },
         {
+            'id': '3',
             'nom': 'Anxo',
             'cognom1': 'Aragundi',
             'cognom2': 'Mesias',
@@ -36,6 +36,7 @@ def students(request):
             'moduls_matriculats':  ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6']
         },
         {
+            'id': '4',
             'nom': 'Eric',
             'cognom1': 'Sanchez',
             'cognom2': 'Vasquez',
@@ -44,6 +45,7 @@ def students(request):
             'moduls_matriculats':  ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6']
         },
         {
+            'id': '5',
             'nom': 'Dinar',
             'cognom1': 'Khazimullin',
             'cognom2': 'notiene',
@@ -52,6 +54,7 @@ def students(request):
             'moduls_matriculats':  ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6']
         },
         {
+            'id': '6',
             'nom': 'Carlos',
             'cognom1': 'Zambrano',
             'cognom2': 'aray',
@@ -95,4 +98,3 @@ def teacher(request):
     template = loader.get_template('prof.html')
     return HttpResponse(template.render({'teachers': teachers}, request))
 
-# Create your views here.

@@ -1,7 +1,6 @@
 {% extends 'index.html' %}
 {% block content %}
 
-
 <h1>INFORMACIÓ AlUMNE DAW2A TIC BARCELONA</h1>
 <table border="1">
     <tr>
@@ -13,7 +12,6 @@
         <th>Curs</th>
         <th>Moduls</th>
     </tr>
-    {% for student in students %}
     <tr>
         <td>{{ student.id }}</td>
         <td>{{ student.nom }}</td>
@@ -23,6 +21,6 @@
         <td>{{ student.curs }}</td>
         <td>{{ student.moduls_matriculats | join:", " }}</td>
     </tr>
-    {% endfor %}
 </table>
+
 {% endblock %}

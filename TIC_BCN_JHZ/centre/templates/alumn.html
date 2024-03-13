@@ -12,6 +12,7 @@
         <th>Correu</th>
         <th>Curs</th>
         <th>Moduls</th>
+        <th>ENLLAÇ</th>
     </tr>
     {% for student in students %}
     <tr>
@@ -22,6 +23,7 @@
         <td>{{ student.correu }}</td>
         <td>{{ student.curs }}</td>
         <td>{{ student.moduls_matriculats | join:", " }}</td>
+        <td><a href="{% url 'student' student.id %}">INFO+</a></td>
     </tr>
     {% endfor %}
 </table>

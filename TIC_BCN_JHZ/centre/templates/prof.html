@@ -10,6 +10,7 @@
         <th>Edad</th>
         <th>Rol</th>
         <th>Cursos</th>
+        <th>ENLLAÇ</th>
     </tr>
     {% for teacher in teachers %}
     <tr>
@@ -19,7 +20,8 @@
         <td>{{ teacher.edat }}</td>
         <td>{{ teacher.rol }}</td>
         <td>{{ teacher.curs | join:", " }}</td>
-    </tr>
+        <td><a href="{% url 'teacher' teacher.id %}">INFO+</a></td>
+ </tr>
     {% endfor %}
 </table>
 {% endblock %}

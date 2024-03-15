@@ -1,4 +1,4 @@
-# M7 Segon Practica
+# M7 Segona Practica
 
 
 ## Captures

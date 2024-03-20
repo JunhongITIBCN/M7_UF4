@@ -7,10 +7,11 @@
     {% include "header/head.html"%}
 </head>
 <body>
-    <a href= "{% url 'student_form' %}">Formulari Alumnes</a>
-    <a href= "{% url 'teacher_form' %}">Formulari Professors</a>
-    <h1>Primer project</h1>
-    <p>Benviguts a la primera app Prova</p>
+    <h2>Links al formulari</h2>
+    <ul>
+    <li><a href= "{% url 'student_form' %}">Formulari Alumnes</a></li>
+    <li><a href= "{% url 'teacher_form' %}">Formulari Professors</a></li>
+    </ul>
     {% block content %}
 
     {% endblock %}

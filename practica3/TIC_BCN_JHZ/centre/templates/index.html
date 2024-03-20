@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index template</title>
+    {% include "header/head.html"%}
+</head>
+<body>
+    <a href= "{% url 'student_form' %}">Formulari Alumnes</a>
+    <a href= "{% url 'teacher_form' %}">Formulari Professors</a>
+    <h1>Primer project</h1>
+    <p>Benviguts a la primera app Prova</p>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>

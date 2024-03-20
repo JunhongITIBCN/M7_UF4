@@ -1,0 +1,9 @@
+<h1>Formulari Prova</h1>
+
+<form action = "" method="POST">
+    {% csrf_token %}  
+    {{ forms.as_p}}
+    <input type="submit">
+</form>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<h1>INFORMACIÓ AlUMNE DAW2A TIC BARCELONA</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Cognom1</th>
+        <th>Cognom2</th>
+        <th>Correu</th>
+        <th>Curs</th>
+        <th>Moduls</th>
+    </tr>
+    <tr>
+        <td>{{ student.id }}</td>
+        <td>{{ student.nom }}</td>
+        <td>{{ student.cognom1 }}</td>
+        <td>{{ student.cognom2 }}</td>
+        <td>{{ student.correu }}</td>
+        <td>{{ student.curs }}</td>
+        <td>{{ student.moduls_matriculats | join:", " }}</td>
+    </tr>
+</table>
+
+{% endblock %}

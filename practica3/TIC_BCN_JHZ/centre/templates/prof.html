@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<h1>INFORMACIÓ PROFESSORAT TIC BARCELONA</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+        <th>Rol</th>
+        <th>Cursos</th>
+        <th>ENLLAÇ</th>
+    </tr>
+    {% for teacher in teachers %}
+    <tr>
+        <td>{{ teacher.id }}</td>
+        <td>{{ teacher.nom }}</td>
+        <td>{{ teacher.cognom }}</td>
+        <td>{{ teacher.edat }}</td>
+        <td>{{ teacher.rol }}</td>
+        <td>{{ teacher.curs | join:", " }}</td>
+        <td><a href="{% url 'teacher' teacher.id %}">INFO+</a></td>
+ </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

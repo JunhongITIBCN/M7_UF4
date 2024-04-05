@@ -19,20 +19,36 @@ def teacher(request):
     students = Teacher.objects.all()  
     context = {'teachers': students}  
     return render(request, 'prof.html', context)
-from django.shortcuts import render, get_object_or_404
-from .models import Teacher
-
-def teachers(request, pk):
-    teacher_obj = get_object_or_404(Teacher, id=pk)
-    context = {'teacher': teacher_obj}
-    return render(request, 'teacher.html', context)
 
 
 
-def students(request, pk):
-    student_obj = get_object_or_404(Student, id=pk)
-    context = {'student': student_obj}
-    return render(request, 'student.html', context)
+def update_student(request,pk):
+    student = Student.objects.get(id = pk)
+    form = StudentForm(instance= student)
+
+    if request.method == 'POST':
+       form = StudentForm(request.POST, instance= student)
+       if form.is_valid():
+           form.save()
+           return redirect('index')
+    
+    context = {'form' : form}
+    return render(request, 'form.html', context)
+
+def update_teacher(request,pk):
+    teacher = Teacher.objects.get(id = pk)
+    form = TeacherForm(instance= teacher)
+
+    if request.method == 'POST':
+       form = TeacherForm(request.POST, instance= teacher)
+       if form.is_valid():
+           form.save()
+           return redirect('index')
+    
+    context = {'form' : form}
+    return render(request, 'form.html', context)
+
+
 
 def student_form(request):
     form = StudentForm()

@@ -20,7 +20,7 @@
         <td>{{ teacher.edat }}</td>
         <td>{{ teacher.rol }}</td>
         <td>{{ teacher.curs | join:", " }}</td>
-        <td><a href="{% url 'teacher' teacher.id %}">INFO+</a></td>
+        <td><a href="{% url 'update-teacher' teacher.id %}">EDIT</a></td>
  </tr>
     {% endfor %}
 </table>

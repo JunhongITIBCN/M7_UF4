@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+
+from .models import Student, Teacher
 from .forms  import StudentForm, TeacherForm
 from django.shortcuts import render, redirect
 
@@ -9,138 +11,28 @@ def index(request):
     return HttpResponse(template.render())
 
 def student(request):
-    students = students.objects.all()  
+    students = Student.objects.all()  
     context = {'students': students}  
     return render(request, 'alumn.html', context)
 
 def teacher(request):
-    teachers = [
-        {
-            'id': '1',
-            'nom': 'Roger',
-            'cognom': 'Sobrino',
-            'edat': 39,
-            'rol': 'teacher',
-            'curs': ['DAM2B', 'DAW2A']
-        },
-        {
-            'id': '2',
-            'nom': 'Josep Oriol',
-            'cognom': 'Roca',
-            'edat': 25,
-            'rol': 'teacher',
-            'curs': ['DAM2B', 'DAW2A', 'DAW1A']
-        },
-        {
-            'id': '3',
-            'nom': 'Juanma',
-            'cognom': 'Sanchez',
-            'edat': 24,
-            'rol': 'teacher',
-            'curs': ['DAM2B', 'DAW2A']
-        }
-    ]
-    template = loader.get_template('prof.html')
-    return HttpResponse(template.render({'teachers': teachers}, request))
-
+    students = Teacher.objects.all()  
+    context = {'teachers': students}  
+    return render(request, 'prof.html', context)
+from django.shortcuts import render, get_object_or_404
+from .models import Teacher
 
 def teachers(request, pk):
-    teachers = [
-        {
-            'id': '1',
-            'nom': 'Roger',
-            'cognom': 'Sobrino',
-            'edat': 39,
-            'rol': 'teacher',
-            'curs': ['DAM2B', 'DAW2A']
-        },
-        {
-            'id': '2',
-            'nom': 'Josep Oriol',
-            'cognom': 'Roca',
-            'edat': 25,
-            'rol': 'teacher',
-            'curs': ['DAM2B', 'DAW2A', 'DAW1A']
-        },
-        {
-            'id': '3',
-            'nom': 'Juanma',
-            'cognom': 'Sanchez',
-            'edat': 24,
-            'rol': 'teacher',
-            'curs': ['DAM2B', 'DAW2A']
-        }
-    ]
-    teachers_Obj = None
-    for i in teachers :
-        if i['id'] == pk:
-            teachers_Obj = i
-            return render(request, 'teacher.html', {'teacher': teachers_Obj})
+    teacher_obj = get_object_or_404(Teacher, id=pk)
+    context = {'teacher': teacher_obj}
+    return render(request, 'teacher.html', context)
 
 
 
 def students(request, pk):
-    students = [
-        {
-            'id': '1',
-            'nom': 'Jun',
-            'cognom1': 'Zhu',
-            'cognom2': 'Zhang',
-            'correu': '2023_junhong.zhu@iticbcn.cat',
-            'curs': 'DAW2A',
-            'moduls_matriculats': ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6' , 'Mòdul 5']
-        },
-        {
-            'id': '2',
-            'nom': 'Joel',
-            'cognom1': 'Ghanem',
-            'cognom2': 'Gomez',
-            'correu': '2023_joel.ghanem@iticbcn.cat',
-            'curs': 'DAW2A',
-            'moduls_matriculats':  ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6']
-        },
-        {
-            'id': '3',
-            'nom': 'Anxo',
-            'cognom1': 'Aragundi',
-            'cognom2': 'Mesias',
-            'correu': '2023_anxo.aragundi@iticbcn.cat',
-            'curs': 'DAW2A',
-            'moduls_matriculats':  ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6']
-        },
-        {
-            'id': '4',
-            'nom': 'Eric',
-            'cognom1': 'Sanchez',
-            'cognom2': 'Vasquez',
-            'correu': '2023_eric.sanchez@iticbcn.cat',
-            'curs': 'DAW2A',
-            'moduls_matriculats':  ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6']
-        },
-        {
-            'id': '5',
-            'nom': 'Dinar',
-            'cognom1': 'Khazimullin',
-            'cognom2': 'notiene',
-            'correu': '2023_dinar.khazimullin@iticbcn.cat',
-            'curs': 'DAW2A',
-            'moduls_matriculats':  ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6']
-        },
-        {
-            'id': '6',
-            'nom': 'Carlos',
-            'cognom1': 'Zambrano',
-            'cognom2': 'aray',
-            'correu': '2023_carlos.zambrano@iticbcn.cat',
-            'curs': 'DAW2A',
-            'moduls_matriculats':  ['Mòdul 9', 'Mòdul 7' , 'Mòdul 6']
-        }
-    ]
-    students_Obj = None
-    for i in students :
-        if i['id'] == pk:
-            students_Obj = i
-    return render(request, 'student.html', {'student': students_Obj})
+    student_obj = get_object_or_404(Student, id=pk)
+    context = {'student': student_obj}
+    return render(request, 'student.html', context)
 
 def student_form(request):
     form = StudentForm()

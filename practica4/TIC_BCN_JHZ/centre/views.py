@@ -30,7 +30,7 @@ def update_student(request,pk):
        form = StudentForm(request.POST, instance= student)
        if form.is_valid():
            form.save()
-           return redirect('index')
+           return redirect('alumn')
     
     context = {'form' : form}
     return render(request, 'form.html', context)
@@ -43,10 +43,30 @@ def update_teacher(request,pk):
        form = TeacherForm(request.POST, instance= teacher)
        if form.is_valid():
            form.save()
-           return redirect('index')
+           return redirect('prof')
     
     context = {'form' : form}
     return render(request, 'form.html', context)
+
+def delete_student(request,pk):
+    student = Student.objects.get(id = pk)
+
+    if request.method == 'POST':
+        student.delete()
+        return redirect('alumn')
+    
+    context = {'object' : student}
+    return render(request, 'delete_student.html', context)
+
+def delete_teacher(request,pk):
+    teacher = Teacher.objects.get(id = pk)
+
+    if request.method == 'POST':
+        teacher.delete()
+        return redirect('prof')
+    
+    context = {'object' : teacher}
+    return render(request, 'delete_teacher.html', context)
 
 
 

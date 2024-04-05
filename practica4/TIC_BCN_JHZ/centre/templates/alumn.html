@@ -24,6 +24,7 @@
         <td>{{ student.curs }}</td>
         <td>{{ student.moduls_matriculats | join:", " }}</td>
         <td><a href="{% url 'update-student' student.id %}">EDIT</a></td>
+        <td><a href="{% url 'delete-student' student.id %}">DELETE</a></td>
     </tr>
     {% endfor %}
 </table>

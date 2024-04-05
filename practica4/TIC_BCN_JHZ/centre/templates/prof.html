@@ -21,6 +21,8 @@
         <td>{{ teacher.rol }}</td>
         <td>{{ teacher.curs | join:", " }}</td>
         <td><a href="{% url 'update-teacher' teacher.id %}">EDIT</a></td>
+        <td><a href="{% url 'delete-teacher' teacher.id %}">DELETE</a></td>
+
  </tr>
     {% endfor %}
 </table>
